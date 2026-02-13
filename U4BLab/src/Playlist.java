@@ -17,27 +17,36 @@ public class Playlist {
         return result;
     }
 
-//    public String toString(ArrayList<Song> list){
-//        String result = String.format("-20s -15s -10s -10s -10s", "Song Name", "Artist" , "Album", "Year made", "Genre");
-//        result += "\n ----------------------------------------------------------------------------------------");
-//        for(Song i: list){
-//            result+= "\n" + i.toString();
-//        }
-//        return result;
-//    }
-//
-//    public ArrayList<Song> sortYear(){
-//        ArrayList<Song> sorted = new ArrayList<>();
-//        ArrayList<Song> copy = list;
-//        for(int i = copy.size() - 1; i >= 0; i--){
-//            for(int j = copy.size() - 1; j >= 0; i--){
-//                if(copy.get(i).getYear() < copy.get(j).getYear()){
-//                    break;
-//                }
-//                else if(j == 0){
-//                    sorted.add(copy.get(i));
-//                }
-//            }
-//        }
-//    }
+    public String toString(ArrayList<Song> list){
+        String result = String.format("%-30s %-20s %-29s %-11s %-10s", "Song Name", "Artist" , "Album", "Year made", "Genre");
+        result += "\n ----------------------------------------------------------------------------------------------------------";
+        for(Song i: list){
+            result+= "\n" + i.toString();
+        }
+        return result;
+    }
+
+    public ArrayList<Song> sortNewYear(){
+        ArrayList<Song> sorted = new ArrayList<>();
+        ArrayList<Song> copy = new ArrayList<>();
+
+        for(int i = 0; i < list.size(); i++){
+            copy.add(list.get(i));
+        }
+        while(sorted.size() != list.size()){
+            Song biggest = copy.get(0);
+            int biggestVal = 0;
+
+            for(int i = 0; i < copy.size(); i++){
+                if(biggest.getYear() < copy.get(i).getYear()){
+                    biggest = copy.get(i);
+                    biggestVal = i;
+                }
+            }
+
+            sorted.add(biggest);
+            copy.remove(biggestVal);
+        }
+        return sorted;
+    }
 }
