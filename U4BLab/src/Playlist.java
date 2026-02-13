@@ -73,4 +73,15 @@ public class Playlist {
         }
         return sorted;
     }
+
+    public ArrayList<Song> sortGenre(String givenGenre) {
+        ArrayList<Song> sorted = new ArrayList<>();
+
+        for(int i = 0; i < list.size(); i++){
+            if(list.get(i).getGenre().equalsIgnoreCase(givenGenre)){
+                sorted.add(list.get(i));
+            }
+        }
+        return sorted;
+    }
 }
