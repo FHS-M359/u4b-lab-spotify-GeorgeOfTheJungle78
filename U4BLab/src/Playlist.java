@@ -49,4 +49,28 @@ public class Playlist {
         }
         return sorted;
     }
+
+    public ArrayList<Song> sortOldYear(){
+        ArrayList<Song> sorted = new ArrayList<>();
+        ArrayList<Song> copy = new ArrayList<>();
+
+        for(int i = 0; i < list.size(); i++){
+            copy.add(list.get(i));
+        }
+        while(sorted.size() != list.size()){
+            Song smallest = copy.get(0);
+            int smallestVal = 0;
+
+            for(int i = 0; i < copy.size(); i++){
+                if(smallest.getYear() > copy.get(i).getYear()){
+                    smallest = copy.get(i);
+                    smallestVal = i;
+                }
+            }
+
+            sorted.add(smallest);
+            copy.remove(smallestVal);
+        }
+        return sorted;
+    }
 }
