@@ -22,9 +22,5 @@ public class SpotifyTester {
         Playlist songs = new Playlist(list);
 
         System.out.println(songs);
-
-        System.out.println(songs.toString(songs.sortNewYear()));
-
-        System.out.println(songs.toString(songs.sortOldYear()));
     }
 }
