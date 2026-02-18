@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.*;
@@ -22,5 +23,9 @@ public class SpotifyTester {
         Playlist songs = new Playlist(list);
 
         System.out.println(songs);
+        System.out.println();
+        System.out.println(songs.toString(songs.sortAl()));
+
+        //System.out.println(songs.toString(songs.sortGenre("pop")));
     }
 }

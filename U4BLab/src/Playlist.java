@@ -23,6 +23,9 @@ public class Playlist {
         for(Song i: list){
             result+= "\n" + i.toString();
         }
+        if(list.size() == 0){
+            return "No Songs found with Genre Given";
+        }
         return result;
     }
 
@@ -83,5 +86,30 @@ public class Playlist {
             }
         }
         return sorted;
+    }
+
+    public ArrayList<Song> sortAl(){
+        ArrayList<Song> copy = new ArrayList<>();
+
+        for(int i = 0; i < list.size(); i++){
+            copy.add(list.get(i));
+        }
+
+        for(int i = 0; i < copy.size() - 1; i++){
+            int Index = i;
+
+            for(int j = i + 1; j < copy.size(); j++){
+                if((copy.get(i).getCreator().substring(0,1)).compareToIgnoreCase(copy.get(j).getCreator().substring(0,1)) < 0){
+                    Index = j;
+                }
+            }
+
+            if(!(copy.get(i).getCreator().substring(0,1).equals(copy.get(Index).getCreator().substring(0,1)))){
+                Song temp = copy.get(i);
+                copy.set(i, copy.get(Index));
+                copy.set(Index, temp);
+            }
+        }
+        return copy;
     }
 }
