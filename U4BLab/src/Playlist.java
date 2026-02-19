@@ -112,4 +112,29 @@ public class Playlist {
         }
         return copy;
     }
+
+    public ArrayList<Song> sortRevAl(){
+        ArrayList<Song> copy = new ArrayList<>();
+
+        for(int i = 0; i < list.size(); i++){
+            copy.add(list.get(i));
+        }
+
+        for(int i = 0; i < copy.size() - 1; i++){
+            int index = i;
+
+            for(int j = i + 1; j < copy.size(); j++){
+                if((copy.get(j).getCreator().compareToIgnoreCase(copy.get(index).getCreator())) > 0){
+                    index = j;
+                }
+            }
+
+            if(!(copy.get(i).getCreator().substring(0,1).equals(copy.get(index).getCreator().substring(0,1)))){
+                Song temp = copy.get(i);
+                copy.set(i, copy.get(index));
+                copy.set(index, temp);
+            }
+        }
+        return copy;
+    }
 }

@@ -24,7 +24,7 @@ public class SpotifyTester {
 
         System.out.println(songs);
         System.out.println();
-        System.out.println(songs.toString(songs.sortAl()));
+        System.out.println(songs.toString(songs.sortRevAl()));
 
         //System.out.println(songs.toString(songs.sortGenre("pop")));
     }
