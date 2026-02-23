@@ -10,7 +10,7 @@ public class SpotifyTester {
     public static void main(String[] args) throws IOException {
         Playlist songs = new Playlist("spotify_unique_years_artists.txt");
 
-        
+
     }
 }
 
