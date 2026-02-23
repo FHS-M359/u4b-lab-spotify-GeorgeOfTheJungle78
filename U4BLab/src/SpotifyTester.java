@@ -23,8 +23,10 @@ public class SpotifyTester {
         Playlist songs = new Playlist(list);
 
         System.out.println(songs);
-        System.out.println();
-        System.out.println(songs.toString(songs.sortRevAl()));
+        //System.out.println();
+        //System.out.println(songs.toString(songs.sortRevAl()));
+        songs.sortEarly();
+        System.out.println(songs);
 
         //System.out.println(songs.toString(songs.sortGenre("pop")));
     }

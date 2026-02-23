@@ -29,52 +29,28 @@ public class Playlist {
         return result;
     }
 
-    public ArrayList<Song> sortNewYear(){
-        ArrayList<Song> sorted = new ArrayList<>();
-        ArrayList<Song> copy = new ArrayList<>();
-
-        for(int i = 0; i < list.size(); i++){
-            copy.add(list.get(i));
-        }
-        while(sorted.size() != list.size()){
-            Song biggest = copy.get(0);
-            int biggestVal = 0;
-
-            for(int i = 0; i < copy.size(); i++){
-                if(biggest.getYear() < copy.get(i).getYear()){
-                    biggest = copy.get(i);
-                    biggestVal = i;
-                }
+    public void sortEarly(){
+        for(int i = 1; i < list.size(); i++){
+            Song tempVal = list.get(i);
+            int position = i;
+            while(position > 0 && list.get(position - 1).getYear() < tempVal.getYear()){
+                list.set(position, list.get(position - 1));
+                position--;
             }
-
-            sorted.add(biggest);
-            copy.remove(biggestVal);
+            list.set(position, tempVal);
         }
-        return sorted;
     }
 
-    public ArrayList<Song> sortOldYear(){
-        ArrayList<Song> sorted = new ArrayList<>();
-        ArrayList<Song> copy = new ArrayList<>();
-
-        for(int i = 0; i < list.size(); i++){
-            copy.add(list.get(i));
-        }
-        while(sorted.size() != list.size()){
-            Song smallest = copy.get(0);
-            int smallestVal = 0;
-
-            for(int i = 0; i < copy.size(); i++){
-                if(smallest.getYear() > copy.get(i).getYear()){
-                    smallest = copy.get(i);
-                    smallestVal = i;
-                }
+    public void sortLater(){
+        for(int i = 1; i < list.size(); i++){
+            Song tempVal = list.get(i);
+            int position = i;
+            while(position > 0 && list.get(position - 1).getYear() > tempVal.getYear()){
+                list.set(position, list.get(position - 1));
+                position--;
             }
-
-            sorted.add(smallest);
-            copy.remove(smallestVal);
+            list.set(position, tempVal);
         }
-        return sorted;
     }
 
     public ArrayList<Song> sortGenre(String givenGenre) {
