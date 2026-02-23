@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Playlist {
 
     private ArrayList<Song> list;
+    private ArrayList <Song> genreList;
 
     public Playlist(ArrayList<Song> list){
         this.list = list;
@@ -17,13 +18,13 @@ public class Playlist {
         return result;
     }
 
-    public String toString(ArrayList<Song> list){
+    public String toStringGenre(){
         String result = String.format("%-30s %-20s %-29s %-11s %-10s", "Song Name", "Artist" , "Album", "Year made", "Genre");
         result += "\n ----------------------------------------------------------------------------------------------------------";
-        for(Song i: list){
+        for(Song i: genreList){
             result+= "\n" + i.toString();
         }
-        if(list.size() == 0){
+        if(genreList.size() == 0){
             return "No Songs found with Genre Given";
         }
         return result;
@@ -53,64 +54,49 @@ public class Playlist {
         }
     }
 
-    public ArrayList<Song> sortGenre(String givenGenre) {
-        ArrayList<Song> sorted = new ArrayList<>();
+    public void sortGenre(String givenGenre) {
+        genreList = new ArrayList<>();
 
         for(int i = 0; i < list.size(); i++){
             if(list.get(i).getGenre().equalsIgnoreCase(givenGenre)){
-                sorted.add(list.get(i));
+                genreList.add(list.get(i));
             }
         }
-        return sorted;
     }
 
-    public ArrayList<Song> sortAl(){
-        ArrayList<Song> copy = new ArrayList<>();
-
-        for(int i = 0; i < list.size(); i++){
-            copy.add(list.get(i));
-        }
-
-        for(int i = 0; i < copy.size() - 1; i++){
+    public void sortAl(){
+        for(int i = 0; i < list.size() - 1; i++){
             int index = i;
 
-            for(int j = i + 1; j < copy.size(); j++){
-                if((copy.get(j).getCreator().compareToIgnoreCase(copy.get(index).getCreator())) < 0){
+            for(int j = i + 1; j < list.size(); j++){
+                if((list.get(j).getCreator().compareToIgnoreCase(list.get(index).getCreator())) < 0){
                     index = j;
                 }
             }
 
-            if(!(copy.get(i).getCreator().substring(0,1).equals(copy.get(index).getCreator().substring(0,1)))){
-                Song temp = copy.get(i);
-                copy.set(i, copy.get(index));
-                copy.set(index, temp);
+            if(!(list.get(i).getCreator().substring(0,1).equals(list.get(index).getCreator().substring(0,1)))){
+                Song temp = list.get(i);
+                list.set(i, list.get(index));
+                list.set(index, temp);
             }
         }
-        return copy;
     }
 
-    public ArrayList<Song> sortRevAl(){
-        ArrayList<Song> copy = new ArrayList<>();
-
-        for(int i = 0; i < list.size(); i++){
-            copy.add(list.get(i));
-        }
-
-        for(int i = 0; i < copy.size() - 1; i++){
+    public void sortRevAl(){
+        for(int i = 0; i < list.size() - 1; i++){
             int index = i;
 
-            for(int j = i + 1; j < copy.size(); j++){
-                if((copy.get(j).getCreator().compareToIgnoreCase(copy.get(index).getCreator())) > 0){
+            for(int j = i + 1; j < list.size(); j++){
+                if((list.get(j).getCreator().compareToIgnoreCase(list.get(index).getCreator())) > 0){
                     index = j;
                 }
             }
 
-            if(!(copy.get(i).getCreator().substring(0,1).equals(copy.get(index).getCreator().substring(0,1)))){
-                Song temp = copy.get(i);
-                copy.set(i, copy.get(index));
-                copy.set(index, temp);
+            if(!(list.get(i).getCreator().substring(0,1).equals(list.get(index).getCreator().substring(0,1)))){
+                Song temp = list.get(i);
+                list.set(i, list.get(index));
+                list.set(index, temp);
             }
         }
-        return copy;
     }
 }
