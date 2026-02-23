@@ -7,27 +7,16 @@ import java.util.ArrayList;
 import java.util.*;
 
 public class SpotifyTester {
-    public static void main(String[] args) throws IOException, FileNotFoundException {
-        Scanner inF = new Scanner(new File("spotify_unique_years_artists.txt"));
-        ArrayList<Song> list = new ArrayList<>();
-        while(inF.hasNextLine()){
-            String[] line = inF.nextLine().split(",");
-            String name = line[0];
-            String creator = line[1];
-            String album = line[2];
-            int spot = Integer.parseInt(line[3]);
-            int year = Integer.parseInt(line[4]);
-            String genre = line[5];
-            list.add(new Song(name, creator, album, spot, year, genre));
-        }
-        Playlist songs = new Playlist(list);
+    public static void main(String[] args) throws IOException {
+        Playlist songs = new Playlist("spotify_unique_years_artists.txt");
 
         System.out.println(songs);
         //System.out.println();
         //System.out.println(songs.toString(songs.sortRevAl()));
-        songs.sortEarly();
+        songs.sortRevAl();
         System.out.println(songs);
 
         //System.out.println(songs.toString(songs.sortGenre("pop")));
     }
-}
+    }
+
