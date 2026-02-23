@@ -10,13 +10,7 @@ public class SpotifyTester {
     public static void main(String[] args) throws IOException {
         Playlist songs = new Playlist("spotify_unique_years_artists.txt");
 
-        System.out.println(songs);
-        //System.out.println();
-        //System.out.println(songs.toString(songs.sortRevAl()));
-        songs.sortRevAl();
-        System.out.println(songs);
-
-        //System.out.println(songs.toString(songs.sortGenre("pop")));
+        
     }
-    }
+}
 
