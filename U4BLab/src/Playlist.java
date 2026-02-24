@@ -11,6 +11,7 @@ public class Playlist {
     private ArrayList <Song> genreList;
 
     public Playlist(String file) throws IOException, FileNotFoundException {
+        list = new ArrayList<>();
         Scanner inF = new Scanner(new File(file));
         while(inF.hasNextLine()){
             String[] line = inF.nextLine().split(",");
@@ -22,6 +23,7 @@ public class Playlist {
             String genre = line[5];
             list.add(new Song(name, creator, album, spot, year, genre));
         }
+        inF.close();
     }
 
     public String toString(){
