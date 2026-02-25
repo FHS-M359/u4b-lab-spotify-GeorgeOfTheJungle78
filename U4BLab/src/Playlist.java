@@ -25,7 +25,7 @@ public class Playlist {
         }
         inF.close();
     }
-
+    //returns the list arraylist in a formated way
     public String toString(){
         String result = String.format("%-30s %-20s %-29s %-11s %-10s", "Song Name", "Artist" , "Album", "Year made", "Genre");
         result += "\n ----------------------------------------------------------------------------------------------------------";
@@ -34,7 +34,7 @@ public class Playlist {
         }
         return result;
     }
-
+    //returns the genre sorted arraylist in a formated way, if the array is empty it states it is instead
     public String toStringGenre(){
         String result = String.format("%-30s %-20s %-29s %-11s %-10s", "Song Name", "Artist" , "Album", "Year made", "Genre");
         result += "\n ----------------------------------------------------------------------------------------------------------";
@@ -46,7 +46,7 @@ public class Playlist {
         }
         return result;
     }
-
+    //sorts by most recent year
     public void sortRecent(){
         for(int i = 1; i < list.size(); i++){
             Song tempVal = list.get(i);
@@ -58,7 +58,7 @@ public class Playlist {
             list.set(position, tempVal);
         }
     }
-
+    //sorts by oldest year
     public void sortOldest(){
         for(int i = 1; i < list.size(); i++){
             Song tempVal = list.get(i);
@@ -70,7 +70,7 @@ public class Playlist {
             list.set(position, tempVal);
         }
     }
-
+    //sorts genre into the genreList arraylist and clears the old genreList if it existed
     public void sortGenre(String givenGenre) {
         genreList = new ArrayList<>();
 
@@ -80,7 +80,7 @@ public class Playlist {
             }
         }
     }
-
+    //sorts the list alphabetically
     public void sortAl(){
         for(int i = 0; i < list.size() - 1; i++){
             int index = i;
@@ -98,7 +98,7 @@ public class Playlist {
             }
         }
     }
-
+    //sorts the list in reverse alphabet order
     public void sortRevAl(){
         for(int i = 0; i < list.size() - 1; i++){
             int index = i;
