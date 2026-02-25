@@ -47,7 +47,7 @@ public class Playlist {
         return result;
     }
 
-    public void sortEarly(){
+    public void sortRecent(){
         for(int i = 1; i < list.size(); i++){
             Song tempVal = list.get(i);
             int position = i;
@@ -59,7 +59,7 @@ public class Playlist {
         }
     }
 
-    public void sortLater(){
+    public void sortOldest(){
         for(int i = 1; i < list.size(); i++){
             Song tempVal = list.get(i);
             int position = i;
