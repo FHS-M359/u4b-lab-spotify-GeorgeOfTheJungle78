@@ -16,7 +16,7 @@ public class SpotifyTester {
 
         choiceLoop(choice, songs, scan);
     }
-    
+
     public static int callMenu(Scanner scan){
         boolean wrong = true;
         int choice = 0;
@@ -108,35 +108,42 @@ public class SpotifyTester {
         return genre;
     }
     public static void choiceLoop(int choice, Playlist songs, Scanner scan){
-        while(choice != 7){
-            if(choice == 1){
+        final int end = 7;
+        final int al = 1;
+        final int revAl = 2;
+        final int old = 3;
+        final int recent = 4;
+        final int genreInt = 5;
+        final int print = 6;
+        while(choice != end){
+            if(choice == al){
                 callAl(songs);
                 choice = callMenu(scan);
             }
-            if(choice == 2){
+            if(choice == revAl){
                 callRevAl(songs);
                 choice = callMenu(scan);
             }
-            if(choice == 3){
+            if(choice == old){
                 callyearL(songs);
                 choice = callMenu(scan);
             }
-            if(choice == 4){
+            if(choice == recent){
                 callyearE(songs);
                 choice = callMenu(scan);
             }
-            if(choice == 5){
+            if(choice == genreInt){
                 String genre = getValidGenre(scan);
                 callGenre(songs, genre);
                 choice = callMenu(scan);
             }
-            if(choice == 6){
+            if(choice == print){
                 callList(songs);
                 choice = callMenu(scan);
             }
         }
 
-        if(choice == 7){
+        if(choice == end){
             System.exit(0);
             scan.close();
         }
